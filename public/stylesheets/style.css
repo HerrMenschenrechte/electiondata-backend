@@ -1,0 +1,30 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+
+a {
+  color: #000000;
+  font-weight: bold;
+}
+
+.pure-g {
+  height: 100%
+}
+
+
+.l-box-blue {
+  padding: 1em;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2541B2;
+  height: 100%
+}
+
+.l-box {
+  height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
