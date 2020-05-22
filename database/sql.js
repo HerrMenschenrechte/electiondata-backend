@@ -57,3 +57,14 @@ exports.sql_insert_posts_Slovakia = `INSERT INTO slovakia_posts (ad_snapshot_url
 exports.sql_insert_regions_Slovakia = `INSERT INTO facebook_data.slovakia_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
 
 exports.sql_insert_demographic_Slovakia = `INSERT INTO facebook_data.slovakia_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
+
+
+exports.sql_insert_posts_Australia = `INSERT INTO australia_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
+  impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
+  ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
+  ad_delivery_start_time, ad_delivery_stop_time) VALUES ?`;
+
+
+exports.sql_insert_regions_Australia = `INSERT INTO facebook_data.australia_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_demographic_Australia = `INSERT INTO facebook_data.australia_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
