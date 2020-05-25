@@ -4,7 +4,7 @@ Backend of the Facebook Election Advertising Data transparency tool
 
 ## Tech Stack
 
-This page uses:
+This app uses:
 
 - [Node JS](https://nodejs.org/en/)
 - [Express Framework](https://expressjs.com/)
