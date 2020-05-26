@@ -33,29 +33,28 @@ In order to prepare the data set for analysis and Excel .csv compatibility, perf
 
     **SQL Statement**
 
-    UPDATE germany_posts SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));
-    UPDATE germany_posts SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
-    SELECT ad_snapshot_url FROM denmark_posts
+    UPDATE *table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));
+    UPDATE *table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
 
 2. Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
 
     **SQL Statement**
 
-    UPDATE *table_name* SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));
+    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));
 
-    UPDATE *table_name* SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));
+    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));
 
-    UPDATE *table_name* SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));
-    UPDATE *table_name* SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));
+    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));
+    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));
 
-    UPDATE *table_name* SET ad_creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));
-    UPDATE *table_name* SET ad_creative_body = (REPLACE(ad_creative_body, '\\n', ' '));
-    UPDATE *table_name* SET ad_creative_body = (REPLACE(ad_creative_body, '\\"', '""'));
+    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));
+    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\n', ' '));
+    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\"', '""'));
 
 ## Other helpful SQL statements
 
