@@ -11,7 +11,7 @@ This app uses:
 - [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/) to store the data extracted from the Facebook Ad Library API
 - [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) to run the data extraction without using local computing resources
 - [Azure App Insights](https://azure.microsoft.com/en-us/services/monitor/) to monitor the app service running in the cloud and send notifications in case of issues
-- [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/) as a data sink for an Azure Data Factory pipeline that transforms  data from the MySQL database into a comma separated file that can be provided to users in the frontend
+- [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/) as a data sink for an Azure Data Factory pipeline that transforms data from the MySQL database into a comma separated file that can be provided to users in the frontend
 
 ## Data Extraction
 
@@ -33,28 +33,27 @@ In order to prepare the data set for analysis and Excel .csv compatibility, perf
 
     **SQL Statement**
 
-    UPDATE *table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));
-    UPDATE *table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
+    UPDATE _table_name_ SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));  
+    UPDATE _table_name_ SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
 
-2. Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
+2.  Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
 
     **SQL Statement**
 
-    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));
-
-    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));
-
-    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));
-    UPDATE australia_posts SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));
-
-    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));
-    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\n', ' '));
-    UPDATE australia_posts SET ad_creative_body = (REPLACE(ad_creative_body, '\\"', '""'));
+    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));  
+    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));  
+    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));  
+    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\n', ' '));  
+    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\"', '""'));  
+    UPDATE _table_name_ SET page_name = (REPLACE(page_name, ';', ','));  
+    UPDATE _table_name_ SET funding_entity = (REPLACE( funding_entity, ';', ','));
 
 ## Other helpful SQL statements
 
@@ -66,9 +65,9 @@ CREATE TABLE tbl_new AS SELECT \* FROM tbl_old;
 
 - Make sure that the data extraction did not produce any duplicate data entries
 
-SELECT ad_snapshot_url, COUNT(_) occurences
-FROM germany_posts
+SELECT ad*snapshot_url, COUNT(*) occurences
+FROM germany*posts
 Group BY ad_snapshot_url
-having COUNT(_) > 1;
+having COUNT(*) > 1;
 
 ## List of Common API Bugs
