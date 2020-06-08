@@ -33,27 +33,27 @@ In order to prepare the data set for analysis and Excel .csv compatibility, perf
 
     **SQL Statement**
 
-    UPDATE _table_name_ SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));  
-    UPDATE _table_name_ SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
+    UPDATE _table_name_ SET ad*snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));  
+    UPDATE \_table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
 
 2.  Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
 
     **SQL Statement**
 
-    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));  
-    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));  
-    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));  
-    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\n', ' '));  
-    UPDATE _table_name_ SET ad_creative_body = (REPLACE(ad_creative_body, '\\"', '""'));  
-    UPDATE _table_name_ SET page_name = (REPLACE(page_name, ';', ','));  
-    UPDATE _table_name_ SET funding_entity = (REPLACE( funding_entity, ';', ','));
+    UPDATE _table_name_ SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));  
+    UPDATE \_table_name* SET ad*creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_caption = (REPLACE(ad_creative_link_caption, '\\"', '""'));  
+    UPDATE \_table_name* SET ad*creative_link_description = (REPLACE(ad_creative_link_description, '\\n\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_description = (REPLACE(ad_creative_link_description, '\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_link_description = (REPLACE(ad_creative_link_description, '\\"', '""'));  
+    UPDATE \_table_name* SET ad*creative_body = (REPLACE(ad_creative_body, '\\n\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_body = (REPLACE(ad_creative_body, '\\n', ' '));  
+    UPDATE \_table_name* SET ad*creative_body = (REPLACE(ad_creative_body, '\\"', '""'));  
+    UPDATE \_table_name* SET page*name = (REPLACE(page_name, ';', ','));  
+    UPDATE \_table_name* SET funding_entity = (REPLACE( funding_entity, ';', ','));
 
 ## Other helpful SQL statements
 
@@ -65,9 +65,9 @@ CREATE TABLE tbl_new AS SELECT \* FROM tbl_old;
 
 - Make sure that the data extraction did not produce any duplicate data entries
 
-SELECT ad*snapshot_url, COUNT(*) occurences
-FROM germany*posts
+SELECT ad_snapshot_url, COUNT(_) occurences
+FROM germany_posts
 Group BY ad_snapshot_url
-having COUNT(*) > 1;
+having COUNT(_) > 1;
 
 ## List of Common API Bugs

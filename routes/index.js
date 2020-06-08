@@ -44,4 +44,9 @@ router.get("/australia", async function (req, res, next) {
   queryDB.getDataCollection(req, res, next);
 });
 
+router.get("/india", async function (req, res, next) {
+  req.data = "Australia"
+  queryDB.getDataCollection(req, res, next);
+});
+
 module.exports = router;
