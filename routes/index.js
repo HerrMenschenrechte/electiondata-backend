@@ -45,7 +45,7 @@ router.get("/australia", async function (req, res, next) {
 });
 
 router.get("/india", async function (req, res, next) {
-  req.data = "Australia"
+  req.data = "India"
   queryDB.getDataCollection(req, res, next);
 });
 
