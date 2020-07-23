@@ -1,3 +1,14 @@
+exports.sql_truncate_posts_Denmark = 'TRUNCATE denmark_posts;'
+exports.sql_truncate_demographic_Denmark = 'TRUNCATE denmark_demographic;'
+exports.sql_truncate_regions_Denmark = 'TRUNCATE denmark_regions;'
+exports.sql_truncate_posts_Germany = 'TRUNCATE germany_posts;'
+exports.sql_truncate_demographic_Germany = 'TRUNCATE germany_demographic;'
+exports.sql_truncate_regions_Germany = 'TRUNCATE germany_regions;'
+exports.sql_truncate_posts_France = 'TRUNCATE france_posts;'
+exports.sql_truncate_demographic_France = 'TRUNCATE france_demographic;'
+exports.sql_truncate_regions_France = 'TRUNCATE france_regions;'
+
+
 exports.sql_insert_posts_Denmark = `INSERT INTO denmark_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
   impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
   ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
@@ -78,3 +89,13 @@ exports.sql_insert_posts_India = `INSERT INTO india_posts (ad_snapshot_url, post
 exports.sql_insert_regions_India = `INSERT INTO facebook_data.india_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
 
 exports.sql_insert_demographic_India = `INSERT INTO facebook_data.india_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_posts_us = `INSERT INTO us_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
+  impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
+  ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
+  ad_delivery_start_time, ad_delivery_stop_time) VALUES ?`;
+
+
+exports.sql_insert_regions_us = `INSERT INTO facebook_data.us_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_demographic_us = `INSERT INTO facebook_data.us_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`

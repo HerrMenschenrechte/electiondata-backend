@@ -50,7 +50,10 @@ exports.storeInDB = async function processData(info, url) {
 }
 
 
+async function truncatePosts(connection, url) {
+    await connection.query(sql).catch(err => {console.log(err)})
 
+}
 
 async function storePosts(data, connection, url) {
     await connection.query(sql["sql_insert_posts_" + url], [data]).catch(err => {
