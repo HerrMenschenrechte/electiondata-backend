@@ -59,9 +59,9 @@ exports.getDataCollection = async function (req, res, next) {
     "&access_token=" +
     token;
   console.log("Initial URL: " + url);
-  processData(url, req.data).catch(error => {
-    processData(error.response.config.url, req.data)
-  });
+
+  processData(url, req.data).catch(error => console.log(error));
+
 
   res.redirect("/");
 
@@ -78,18 +78,43 @@ let counter = 1
 
 
 async function processData(url, req) {
+
   let persistentReq = req
   console.log("Current URL: " + url)
+
+
+
+
   let response = await api.get(url).catch(err => {
-    if (err !== undefined) {
-      processData(err.response.config.url, persistentReq)
+
+    if (err.message.includes("400") == true) {
+
+      if (err.response.data.error.code == 613) {
+
+        let xBusiness = JSON.parse(err.response.headers['x-business-use-case-usage'])
+        let timeToAccess = xBusiness['2381529675200446'][0].estimated_time_to_regain_access + 30000
+
+        console.log(err.response.data.error)
+        console.log("The Facebook API request failed because of API limit exhaustion. Waiting for timeout to expire")
+        console.log("Minutes to regain access: " + xBusiness['2381529675200446'][0].estimated_time_to_regain_access)
+
+        return new Promise((resolve => setTimeout(resolve, (timeToAccess * 1000 * 60))))
+
+      } else {
+        console.log(err)
+        console.log("The Facebook API request failed because of invalid parameters")
+        return;
+      }
+
+
+
     }
   })
 
-
-
+  if (typeof response == 'undefined') {
+    processData(url, req)
+  }
   let processedData = []
-  // console.log(response.data.paging.next)
 
   response.data.data.forEach(element => {
 
@@ -207,6 +232,6 @@ async function processData(url, req) {
   } else {
     console.log("There is no more data")
   }
+
+
 }
-
-
