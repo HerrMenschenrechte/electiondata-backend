@@ -115,6 +115,7 @@ async function processData(url, req) {
     processData(url, req)
   }
   let processedData = []
+  let apiUsage = JSON.parse(response.headers['x-business-use-case-usage'])
 
   response.data.data.forEach(element => {
 
@@ -225,6 +226,12 @@ async function processData(url, req) {
   })
   await db.storeInDB(processedData, req).catch(error => console.log(error))
   console.log(counter + " Pages Processed")
+  console.log("API Rate Limit: " + apiUsage['2381529675200446'][0].object_count_pct + "% Reached")
+  console.log("Time to Regain Access: " + apiUsage['2381529675200446'][0].estimated_time_to_regain_access + " Minutes")
+  console.log("API CPU Time: " + apiUsage['2381529675200446'][0].total_cputime + "% Reached")
+  console.log("Total API Request Time: " + apiUsage['2381529675200446'][0].total_time + "% Reached")
+
+
 
   if (response.data.paging.next !== undefined) {
     processData(response.data.paging.next, persistentReq)
