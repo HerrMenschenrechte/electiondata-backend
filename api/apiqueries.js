@@ -79,7 +79,6 @@ async function processData(url, req) {
 
   let persistentReq = req
   let processedData = []
-  let apiUsage = JSON.parse(response.headers['x-business-use-case-usage'])
   console.log("Current URL: " + url)
 
 
@@ -110,6 +109,8 @@ async function processData(url, req) {
       }
     }
   })
+
+  let apiUsage = JSON.parse(response.headers['x-business-use-case-usage'])
 
   if (typeof response == 'undefined') {
     processData(url, req)
