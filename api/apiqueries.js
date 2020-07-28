@@ -99,7 +99,7 @@ async function processData(url, req) {
         console.log("The Facebook API request failed because of API limit exhaustion. Waiting for timeout to expire")
         console.log("Minutes to regain access: " + xBusiness['2381529675200446'][0].estimated_time_to_regain_access)
 
-        await pauseAPICalls((timeToAccess * 60 * 1000) + 30000)
+        pauseAPICalls((timeToAccess * 60 * 1000) + 30000)
         console.log("Facebook throttling expired, attempting to resume download")
         processData(url, req)
 
