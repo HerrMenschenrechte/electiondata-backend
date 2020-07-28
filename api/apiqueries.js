@@ -42,6 +42,8 @@ let field =
   "," +
   config.field.spend;
 
+let counter = 1
+
 exports.getDataCollection = async function (req, res, next) {
 
 
@@ -71,7 +73,6 @@ exports.getDataCollection = async function (req, res, next) {
 
 
 
-let counter = 1
 
 
 async function processData(url, req) {
