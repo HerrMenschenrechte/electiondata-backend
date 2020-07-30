@@ -5,7 +5,7 @@ const unique_id = require("shortid");
 
 // parameters for the search query
 
-let token = process.env.fb_access_token;
+let token = "EAAh1ZCRZAP974BAMjZAUz81FW57i85ZAMoMpKkOpQFmEicdePxvb5ZB94aQwdtBbk8D4yuvVNBfQVep9sX7Fy9xCDB7dJFZC5o65qcseTtLXKsM00VsWUTvgLBfeFQ4L1fWiywffAFXIsuwRQFztoNKsZA5rYn21P2McLpZAhriOV9KZC9Gsi3Yjc";
 let parameter =
   "&ad_active_status=" +
   config.parameter.ad_active_status
@@ -84,7 +84,7 @@ async function processData(url, req) {
 
 
 
-  let response = await api.get(url).catch(err => {
+  let response = await api.get(url).catch(async function handleError() {
 
 
     if (err.message.includes("400") == true) {
@@ -98,8 +98,9 @@ async function processData(url, req) {
         console.log("The Facebook API request failed because of API limit exhaustion. Waiting for timeout to expire")
         console.log("Minutes to regain access: " + xBusiness['2381529675200446'][0].estimated_time_to_regain_access)
 
-        pauseAPICalls((timeToAccess * 60 * 1000) + 30000)
+
         console.log("Facebook throttling expired, attempting to resume download")
+        await pauseAPICalls((timeToAccess * 60 * 1000) + 30000)
         processData(url, req)
 
       } else {
@@ -109,6 +110,8 @@ async function processData(url, req) {
       }
     }
   })
+
+
 
   let apiUsage = JSON.parse(response.headers['x-business-use-case-usage'])
 
