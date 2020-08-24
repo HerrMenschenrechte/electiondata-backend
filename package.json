@@ -6,7 +6,7 @@
     "start": "node server"
   },
   "dependencies": {
-    "applicationinsights": "^1.7.3",
+    "applicationinsights": "^1.8.5",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
