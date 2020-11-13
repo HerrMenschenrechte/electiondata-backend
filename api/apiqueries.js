@@ -54,7 +54,7 @@ exports.getDataCollection = async function (req, res, next) {
     'search_terms=""' + "&search_page_ids=109111900634787,1336293769761923" +
     "&fields=" +
     field +
-    "&ad_reached_countries=US" + config.parameter[country] +
+    "&ad_reached_countries=" + config.parameter.us +
     parameter +
     "&limit=" +
     config.search.limit +
