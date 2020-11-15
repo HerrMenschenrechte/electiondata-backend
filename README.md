@@ -33,7 +33,7 @@ In order to prepare the data set for analysis and Excel .csv compatibility, perf
 
     **SQL Statement**
 
-    UPDATE _table_name_ SET ad*snapshot_url = (REPLACE(ad_snapshot_url, '\&access_token=\*\*', ''));  
+    UPDATE table_name SET  ad_snapshot_url = SUBSTRING_INDEX( ad_snapshot_url, '&access_token=', 1);
     UPDATE \_table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
 
 2.  Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
