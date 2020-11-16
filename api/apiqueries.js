@@ -51,10 +51,10 @@ exports.getDataCollection = async function (req, res, next) {
 
   let url =
     "https://graph.facebook.com/v9.0/ads_archive?" +
-    'search_terms=""' + "&search_page_ids=109111900634787,1336293769761923" +
+    'search_terms=""' +
     "&fields=" +
     field +
-    "&ad_reached_countries=" + config.parameter.us +
+    "&ad_reached_countries=" + config.parameter[country] +
     parameter +
     "&limit=" +
     config.search.limit +
