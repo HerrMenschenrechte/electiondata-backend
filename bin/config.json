@@ -37,6 +37,9 @@
         "Australia": ["AU"],
         "India": ["IN"],
         "us": ["US"],
+        "sweden": ["SE"],
+        "norway": ["NO"],
+        "finland": ["FI"],
         "ad_type": "ALL",
         "search_page_ads": ""
     }
