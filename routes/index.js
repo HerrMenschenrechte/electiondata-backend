@@ -59,4 +59,19 @@ router.get("/georgia", async function (req, res, next) {
   queryDB.getDataCollection(req, res, next);
 });
 
+router.get("/sweden", async function (req, res, next) {
+  req.data = "sweden"
+  queryDB.getDataCollection(req, res, next);
+});
+
+router.get("/norway", async function (req, res, next) {
+  req.data = "norway"
+  queryDB.getDataCollection(req, res, next);
+});
+
+router.get("/finland", async function (req, res, next) {
+  req.data = "finland"
+  queryDB.getDataCollection(req, res, next);
+});
+
 module.exports = router;

@@ -109,3 +109,33 @@ exports.sql_insert_posts_georgia = `INSERT INTO georgia_senate_posts (ad_snapsho
 exports.sql_insert_regions_georgia = `INSERT INTO facebook_data.georgia_senate_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
 
 exports.sql_insert_demographic_georgia = `INSERT INTO facebook_data.georgia_senate_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_posts_sweden = `INSERT INTO facebook_data.sweden_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
+  impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
+  ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
+  ad_delivery_start_time, ad_delivery_stop_time) VALUES ?`;
+
+
+exports.sql_insert_regions_sweden = `INSERT INTO facebook_data.sweden_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_demographic_sweden = `INSERT INTO facebook_data.sweden_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_posts_norway = `INSERT INTO facebook_data.norway_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
+  impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
+  ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
+  ad_delivery_start_time, ad_delivery_stop_time) VALUES ?`;
+
+
+exports.sql_insert_regions_norway = `INSERT INTO facebook_data.norway_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_demographic_norway = `INSERT INTO facebook_data.norway_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_posts_finland = `INSERT INTO facebook_data.finland_posts (ad_snapshot_url, post_id, page_name, page_id, funding_entity, 
+  impressions_lower, impressions_upper, spend_lower_bound, spend_upper_bound, currency, 
+  ad_creative_body, ad_creative_link_caption, ad_creative_link_description, ad_creative_link_title, ad_creation_time, 
+  ad_delivery_start_time, ad_delivery_stop_time) VALUES ?`;
+
+
+exports.sql_insert_regions_finland = `INSERT INTO facebook_data.finland_regions (percentage, region, post_id, ad_snapshot_url) VALUES ?`
+
+exports.sql_insert_demographic_finland = `INSERT INTO facebook_data.finland_demographic (percentage, age, gender, post_id, ad_snapshot_url) VALUES ?`
