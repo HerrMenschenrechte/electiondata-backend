@@ -27,20 +27,28 @@ All data is queried from the Facebook Ad Library API. If you want to extract you
 
 ## Data Cleaning
 
-In order to prepare the data set for analysis and Excel .csv compatibility, perform the steps below:
+In order to prepare the data set for analysis and Excel .csv compatibility, perform the steps below **(See data_cleaning.sql for full list of commands)**:
 
-1.  Remove the access token from the post URLs to avoid other people using your account credentials and update the URL so that users can use them as normal links.
+1. Remove the access token from the post URLs to avoid other people using your account credentials and update the URL so that users can use them as normal links.
 
     **SQL Statement**
 
-    UPDATE table_name SET  ad_snapshot_url = SUBSTRING_INDEX( ad_snapshot_url, '&access_token=', 1);
+```sql
+
+SELECT
+    UPDATE \_table_name* SET  ad_snapshot_url = SUBSTRING_INDEX( ad_snapshot_url, '&access_token=', 1);
     UPDATE \_table_name* SET ad_snapshot_url = (REPLACE(ad_snapshot_url, '\archive/render_ad', 'library'));
 
-2.  Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
+```
+
+2. Clean the data from values that break the .csv formatting. This means properly identifying and encapsulating characters like single quotes, double quotes and backslashes
 
     **SQL Statement**
 
-    UPDATE _table_name_ SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));  
+```sql
+
+SELECT
+    UPDATE \_table_name* SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\n\\n', ' '));  
     UPDATE \_table_name* SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\n', ' '));  
     UPDATE \_table_name* SET ad*creative_link_title = (REPLACE(ad_creative_link_title, '\\"', '""'));  
     UPDATE \_table_name* SET ad*creative_link_caption = (REPLACE(ad_creative_link_caption, '\\n\\n', ' '));  
@@ -55,19 +63,68 @@ In order to prepare the data set for analysis and Excel .csv compatibility, perf
     UPDATE \_table_name* SET page*name = (REPLACE(page_name, ';', ','));  
     UPDATE \_table_name* SET funding_entity = (REPLACE( funding_entity, ';', ','));
 
+
+```
+
+## Transformation to CSV (Azure Data Factory)
+
+1. Open [Azure Data Factory](https://adf.azure.com/datafactories)
+2. From the home screen, click *Copy Data*
+3. Select *FacebookPostDataLink* as the source database
+4. Select *country_posts* as the source table
+5. Select *FacebookDataLink* as the destination data store
+6. Select *thesisdata* as the folder path and name the file (**Important:** Add .csv fileing to file name)
+7. File format settings:
+   1. File Format: Text Format
+   2. Column Delimiter: ;
+   3. Row Delimiter: Auto Detect
+   4. Add header to file: Yes
+   5. No Compression Type
+   6. No Escape character
+   7. No Quote character
+   8. Encoding Default (UTF-8)
+
 ## Other helpful SQL statements
 
 ### Copy table for backup
 
+```sql SELECT
+
 CREATE TABLE tbl_new AS SELECT \* FROM tbl_old;
+
+```
 
 ### Check for duplicate entries in ad_snapshot_url column
 
 - Make sure that the data extraction did not produce any duplicate data entries
 
-SELECT ad_snapshot_url, COUNT(_) occurences
+```sql SELECT
+
+SELECT ad_snapshot_url, COUNT(_) occurrences
 FROM germany_posts
 Group BY ad_snapshot_url
 having COUNT(_) > 1;
+
+```
+
+### Count number of posts across all tables
+
+```sql
+
+SELECT
+(SELECT COUNT(id) FROM australia_posts) +
+(SELECT COUNT(id) FROM denmark_posts) +
+(SELECT COUNT(id) FROM finland_posts) +
+(SELECT COUNT(id) FROM france_posts) +
+(SELECT COUNT(id) FROM germany_posts) +
+(SELECT COUNT(id) FROM hungary_posts) +
+(SELECT COUNT(id) FROM india_posts) +
+(SELECT COUNT(id) FROM norway_posts) +
+(SELECT COUNT(id) FROM slovakia_posts) +
+(SELECT COUNT(id) FROM sweden_posts) +
+(SELECT COUNT(id) FROM uk_posts) +
+(SELECT COUNT(id) FROM us_posts)
+
+```
 
 ## List of Common API Bugs
