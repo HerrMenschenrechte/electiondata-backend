@@ -111,13 +111,17 @@ async function processData(url, req) {
     }
   })
 
+  console.log(response.data.paging)
+
+  if (typeof response == 'undefined') {
+    console.log("empty response, attempting download again...")
+    processData(url, req)
+  }
 
 
   let apiUsage = JSON.parse(response.headers['x-business-use-case-usage'])
 
-  if (typeof response == 'undefined') {
-    processData(url, req)
-  }
+
 
 
 
