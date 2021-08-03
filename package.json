@@ -6,20 +6,20 @@
     "start": "node server"
   },
   "dependencies": {
-    "applicationinsights": "^1.8.8",
+    "applicationinsights": "^2.1.4",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
-    "debug": "^4.3.1",
+    "debug": "^4.3.2",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "express-validator": "^6.9.0",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.12.1",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.6",
-    "promise-mysql": "^5.0.1",
-    "pug": "^3.0.0",
+    "nodemon": "^2.0.12",
+    "promise-mysql": "^5.0.3",
+    "pug": "^3.0.2",
     "save": "^2.4.0",
     "shortid": "^2.2.16"
   }
